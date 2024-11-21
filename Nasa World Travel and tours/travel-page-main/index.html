@@ -61,36 +61,48 @@
 
     <!-- home section ends -->
 
-    <!-- booking form section starts  -->
+<!-- booking form section starts -->
 
-    <section class="book-form" id="book-form">
+<section class="book-form" id="book-form">
 
-        <form action="">
-            <div data-aos="zoom-in" data-aos-delay="150" class="inputBox">
-                <span>Rooms</span>
-                <input type="text" placeholder="No. of Rooms" value="">
-            </div>
-            <div data-aos="zoom-in" data-aos-delay="300" class="inputBox">
-                <span>Check in Date ?</span>
-                <input type="date" value="">
-            </div>
-            <div data-aos="zoom-in" data-aos-delay="300" class="inputBox">
-                <span>Check out Date ?</span>
-                <input type="date" value="">
-            </div>
-            <div data-aos="zoom-in" data-aos-delay="450" class="inputBox">
-                <span>Total Adults?</span>
-                <input type="number" placeholder="number of adults" value="">
-            </div>
+    <form id="bookingForm" onsubmit="sendEmail(event)">
+        <div data-aos="zoom-in" data-aos-delay="150" class="inputBox">
+            <span>you are planning?</span>
+            <input type="text" id="placeName" placeholder="place name" required>
         </div>
-        <a href="mailto:jaabalhomestay@gmail.com?subject=Booking%20Inquiry" data-aos="zoom-in" data-aos-delay="600" class="btn">
-            <center> Book Now</center>
-         </a>
-        </form>
+        <div data-aos="zoom-in" data-aos-delay="300" class="inputBox">
+            <span>When looking for?</span>
+            <input type="date" id="date" required>
+        </div>
+        <div data-aos="zoom-in" data-aos-delay="450" class="inputBox">
+            <span>Total members?</span>
+            <input type="number" id="members" placeholder="number of travelers" required>
+        </div>
+        <input data-aos="zoom-in" data-aos-delay="600" type="submit" value="book now" class="btn">
+    </form>
 
-    </section>
+</section>
 
-    <!-- booking form section ends -->
+<!-- booking form section ends -->
+
+<script>
+    function sendEmail(event) {
+        event.preventDefault(); // Prevent the form from submitting the default way
+
+        // Fetch form values
+        const placeName = document.getElementById('placeName').value;
+        const date = document.getElementById('date').value;
+        const members = document.getElementById('members').value;
+
+        // Construct the email body
+        const subject = encodeURIComponent("Booking Details");
+        const body = encodeURIComponent(`You are planning: ${placeName}\nWhen looking for: ${date}\nTotal members: ${members}`);
+
+        // Open the user's email client with the pre-filled details
+        window.location.href = `mailto:nasaworldtraveltours@gmail.com?subject=${subject}&body=${body}`;
+    }
+</script>
+
 
     <!-- about section starts  -->
 
